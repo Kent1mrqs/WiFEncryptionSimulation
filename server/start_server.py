@@ -1,18 +1,15 @@
 import socket
 import threading
 from ap_config import p,g,private_key_ap
+from utils import xor_encrypt_decrypt
 
-def xor_encrypt_decrypt(message, key):
-    key = str(key)
-    encrypted = ''.join(chr(ord(c) ^ ord(k)) for c, k in zip(message, key * len(message)))
-    return encrypted
 
 public_key_ap = (g ** private_key_ap) % p
 
 def start_ap():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', 12345))
-    server.listen(1)
+    server.listen(3)
     print("AP en attente de connexion...")
     while True:
         conn, addr = server.accept()
@@ -20,26 +17,28 @@ def start_ap():
         client_thread.start()
 
 def handle_client(conn, addr, private_key_ap, public_key_ap, p):
-    print(f"Client connecté : {addr}")
+    print(f"Client connected : {addr}")
     try:
-        # Échange de clés Diffie-Hellman
         client_public_key = int(conn.recv(1024).decode())
         conn.send(str(public_key_ap).encode())
 
         shared_key = (client_public_key ** private_key_ap) % p
 
-        # Réception et déchiffrement des messages
-        encrypted_message = conn.recv(1024).decode()
-        decrypted_message = xor_encrypt_decrypt(encrypted_message, shared_key)
-        print(f"Message déchiffré : {decrypted_message}")
+        while True:
 
-        # Réponse
-        response = "Message reçu"
-        encrypted_response = xor_encrypt_decrypt(response, shared_key)
-        conn.send(encrypted_response.encode())
+            encrypted_message = conn.recv(1024).decode()
+            decrypted_message = xor_encrypt_decrypt(encrypted_message, shared_key)
+            print(f"{addr} sends {decrypted_message}")
+
+
+            response = "Message received"
+            encrypted_response = xor_encrypt_decrypt(response, shared_key)
+            conn.send(encrypted_response.encode())
+
     except Exception as e:
         print(f"Erreur avec le client {addr}: {e}")
     finally:
+        print(f"Client disconnected : {addr}")
         conn.close()
 
 start_ap()

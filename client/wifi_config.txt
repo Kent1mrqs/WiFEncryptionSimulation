@@ -1,1 +1,3 @@
-SSID=MyOpenNetwork
+MAC=123
+IP=localhost
+PORT=12345

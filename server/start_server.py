@@ -1,7 +1,7 @@
 import socket
 import threading
 from ap_config import p,g,private_key_ap
-from utils import xor_encrypt_decrypt
+from utils import rc4
 
 
 public_key_ap = (g ** private_key_ap) % p
@@ -27,12 +27,12 @@ def handle_client(conn, addr, private_key_ap, public_key_ap, p):
         while True:
 
             encrypted_message = conn.recv(1024).decode()
-            decrypted_message = xor_encrypt_decrypt(encrypted_message, shared_key)
+            decrypted_message = rc4(encrypted_message, shared_key)
             print(f"{addr} sends {decrypted_message}")
 
 
             response = "Message received"
-            encrypted_response = xor_encrypt_decrypt(response, shared_key)
+            encrypted_response = rc4(response, shared_key)
             conn.send(encrypted_response.encode())
 
     except Exception as e:

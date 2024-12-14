@@ -1,6 +1,6 @@
 import socket
 from client_config import p,g,private_key_client
-from utils import xor_encrypt_decrypt, read_config
+from utils import rc4, read_config
 
 public_key_client = (g ** private_key_client) % p
 public_key_client_str= str(public_key_client)
@@ -39,11 +39,11 @@ def start_client():
         message = input("message ? \n")
 
         #4. Data Encryption
-        encrypted_message = xor_encrypt_decrypt(message, shared_key)
+        encrypted_message = rc4(message, shared_key)
         client.send(encrypted_message.encode())
 
         encrypted_response = client.recv(1024).decode()
-        response = xor_encrypt_decrypt(encrypted_response, shared_key)
+        response = rc4(encrypted_response, shared_key)
         print(response)
 
     client.close()

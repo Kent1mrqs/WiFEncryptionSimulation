@@ -26,6 +26,21 @@ graph TD
    I --> K[End]
 
 ```
+```mermaid
+graph TD
+   A[Start] --> B[Device Uses Shared WEP Key]
+   B --> C[IV Generation 24 bits]
+   C --> D[Encryption: RC4]
+   D --> E[Send Encrypted Data]
+   E --> F[Receiver Decrypts with Shared Key + IV]
+   F --> G[Integrity Check ]
+   G --> H{Data Integrity?}
+   H -- Yes --> I[Data Successfully Decrypted]
+   H -- No --> J[Data Corrupted, Request Re-send]
+   J --> B
+   I --> K[End]
+
+```
 
 ### Steps :
 1. **Device Uses Shared WEP Key**: The device and router have a pre-shared WEP key for encryption.

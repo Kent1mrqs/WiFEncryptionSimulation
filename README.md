@@ -23,7 +23,7 @@ The goal is to recreate the essential components of a secure WiFi protocol, incl
 - **Information Communication:**
 
 
-For more details, check the [documentation](Wifi.md). 
+For more details, check the [documentation](Network/Wifi.md). 
 
 ## Simulation Key Features
 > Here are the steps of the simulation of simplified WiFi Connection :

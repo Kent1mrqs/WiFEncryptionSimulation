@@ -1,3 +1,9 @@
+from utils.rc4 import rc4
+
+select_encryption = {
+    "WEP": rc4
+}
+
 def read_config(file_path,required_keys):
     config = {}
     try:

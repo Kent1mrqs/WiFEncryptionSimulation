@@ -1,38 +1,51 @@
 import socket
 import threading
-from ap_config import p,g,private_key_ap
-from utils import rc4
-
-
-public_key_ap = (g ** private_key_ap) % p
+from utils import rc4, read_config
 
 def start_ap():
+    config = read_config("wifi_config.txt")
+
+  #  if any(['PORT','PASSWORD'] not in config):
+  #      print("PORT or PASSWORD not found in configuration file. Please update 'wifi_config.txt'.")
+  #      return
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('localhost', 12345))
+    server.bind(('localhost', int(config["PORT"])))
     server.listen(3)
     print("AP en attente de connexion...")
     while True:
         conn, addr = server.accept()
-        client_thread = threading.Thread(target=handle_client, args=(conn, addr, private_key_ap, public_key_ap, p))
+        client_thread = threading.Thread(target=handle_client, args=(conn, addr))
         client_thread.start()
 
-def handle_client(conn, addr, private_key_ap, public_key_ap, p):
+def generate_challenge():
+    return "challenge"
+
+def handle_client(conn, addr):
+    config = read_config("wifi_config.txt")
     print(f"Client connected : {addr}")
     try:
-        client_public_key = int(conn.recv(1024).decode())
-        conn.send(str(public_key_ap).encode())
+        challenge = generate_challenge()
+        print("challenge :", challenge)
 
-        shared_key = (client_public_key ** private_key_ap) % p
+        conn.send(challenge.encode())
+        client_decrypted_challenge = conn.recv(1024).decode()
+
+        encrypted_password = rc4(challenge, config["PASSWORD"])
+
+        if encrypted_password == client_decrypted_challenge:
+            print("Client successfully connected")
+        else:
+            print("Connection Tentative failed. Wrong Password.")
+            conn.close()
 
         while True:
-
             encrypted_message = conn.recv(1024).decode()
-            decrypted_message = rc4(encrypted_message, shared_key)
+            decrypted_message = rc4(encrypted_message, config["PASSWORD"])
             print(f"{addr} sends {decrypted_message}")
 
-
             response = "Message received"
-            encrypted_response = rc4(response, shared_key)
+            encrypted_response = rc4(response, config["PASSWORD"])
             conn.send(encrypted_response.encode())
 
     except Exception as e:

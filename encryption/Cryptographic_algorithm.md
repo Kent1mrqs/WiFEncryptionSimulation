@@ -1,6 +1,5 @@
 # Cryptographic Algorithm
 
-## Diffie-Hellman Exchange Method
 
 ## XOR cipher
 

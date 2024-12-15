@@ -1,4 +1,4 @@
-# CR4 stream cipher
+# RC4 stream cipher
 
 RC4 is a stream cipher that generates a pseudo-random key stream to encrypt or decrypt data.
 
@@ -28,7 +28,7 @@ def rc4(text, key):
 RC4 is a stream cipher that generates a pseudo-random key stream to encrypt or decrypt data.
 
 ### 1. **Key Scheduling Algorithm (KSA)**
-- The algorithm initializes a permutation array `S` of size 256 (values 0 to 255) called `Initial Vector`
+- The algorithm initializes a permutation array `S` of size 256 (values 0 to 255).
 - A secret key is used to shuffle this array. The shuffling ensures the key influences the final state of `S`.
 
 #### Code
@@ -45,7 +45,6 @@ def ksa(key,S):
 
 ### 2. **Pseudo-Random Generation Algorithm (PRGA)**
 - Once the `S` array is initialized, RC4 generates a key stream.
-
 
 #### Code
 

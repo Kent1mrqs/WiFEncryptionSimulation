@@ -1,5 +1,16 @@
 # WEP protocol
 
+## Device authentification 
+
+1. A device tries to connect to a router.
+2. The router sends the device a challenge.
+3. The device encrypts the challenge with password input by the user.
+4. The device sends the result to the router.
+5. The router encrypts the challenge and compares.
+6. If the results is the same, the device is now connected.
+
+## How does it work ? 
+
 ```mermaid
 graph TD
    A[Start] --> B[Device Uses Shared WEP Key]
@@ -14,11 +25,9 @@ graph TD
    J --> B
    I --> K[End]
 
-
-
 ```
 
-### Steps Covered:
+### Steps :
 1. **Device Uses Shared WEP Key**: The device and router have a pre-shared WEP key for encryption.
 2. **IV Generation (24 bits)**: A 24-bit initialization vector (IV) is generated to ensure encryption is unique for each packet.
 3. **Encryption: RC4**: RC4 encryption is applied using the WEP key and the IV. See [documentation](rc4.md).

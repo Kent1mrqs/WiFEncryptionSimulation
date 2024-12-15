@@ -19,6 +19,7 @@
 ## Authentification
 - Open Network: No password is required; you connect immediately.
 - Secured Network: You need to enter a password or use other authentication methods such as:
+  - WEP: Now considered as vulnerable. See [documentation](encryption/WEP/README.md).
   - WPA/WPA2 Password: Common in most home and office networks.
   - WPA3: More secure modern standard.
   - Enterprise Authentication: Requires credentials like a username and password or a certificate.

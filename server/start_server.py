@@ -1,14 +1,17 @@
 import socket
 import threading
-from utils import rc4, read_config
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.rc4 import rc4
+from utils.file import read_config
+
+required_parameters = ['PORT', 'PASSWORD']
+config = read_config("wifi_config.txt", required_parameters)
 
 def start_ap():
-    config = read_config("wifi_config.txt")
-
-  #  if any(['PORT','PASSWORD'] not in config):
-  #      print("PORT or PASSWORD not found in configuration file. Please update 'wifi_config.txt'.")
-  #      return
-
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', int(config["PORT"])))
     server.listen(3)
@@ -22,7 +25,6 @@ def generate_challenge():
     return "challenge"
 
 def handle_client(conn, addr):
-    config = read_config("wifi_config.txt")
     print(f"Client connected : {addr}")
     try:
         challenge = generate_challenge()

@@ -1,18 +1,21 @@
 import socket
-from utils import rc4, read_config
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.rc4 import rc4
+from utils.file import read_config
+
+required_parameters = ['IP', 'PORT', 'MAC', 'PASSWORD']
+config = read_config("wifi_config.txt", required_parameters)
 
 def connect_to_server(client):
-    config = read_config("wifi_config.txt")
-
-  #  if any(['IP','PORT','MAC','PASSWORD'] not in config):
-  #      print("IP, MAC, PORT or PASSWORD not found in configuration file. Please update 'wifi_config.txt'.")
-  #      return
 
     client.connect((config['IP'], int(config['PORT'])))
     return client
 
 def start_client():
-    config = read_config("wifi_config.txt")
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # 1. Authentification

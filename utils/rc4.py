@@ -1,15 +1,3 @@
-def read_config(file_path):
-    config = {}
-    try:
-        with open(file_path, 'r') as file:
-            for line in file:
-                if '=' in line:
-                    key, value = line.strip().split('=', 1)
-                    config[key] = value
-    except FileNotFoundError:
-        print("Configuration file not found. Please create 'wifi_config.txt'.")
-    return config
-
 def xor_encrypt_decrypt(text, key):
     key = str(key)
     encrypted_text = ""
@@ -42,7 +30,7 @@ def prga(S, length):
 def rc4(text, key):
     S = list(range(256))
     S = ksa(str(key),S)
-    keystream = prga(S,16)
+    keystream = prga(S,len(text))
     encrypted = xor_encrypt_decrypt(text,keystream)
 
     return encrypted

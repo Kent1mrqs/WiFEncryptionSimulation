@@ -40,14 +40,32 @@ For more details, check the [documentation](Simulation.md).
 ### Server / Router
 - Open a terminal
 - Clone server repository 
-- Open [`wifi_config.txt`](server/wifi_config.txt)
-- Enter the port you want to use.
-- Then `python3 start_server.py`
+- Open [`wifi_config.txt`](server/wifi_config.txt) and complete it with wanted parameters.
+- Then start the server with `python3 start_server.py`
 
 ### Client / Device
 - Open a new terminal
 - Clone client repository 
 - Open [`wifi_config.txt`](client/wifi_config.txt)
-- Enter the `IP` and `port` of the server and the `MAC` address you want to use for your device.
-- Then `python3 start_client.py`
+- Enter the parameters of you server..
+- Then start the client with `python3 start_client.py`
 - You can simulate several connections if you restart these steps.
+
+
+## Potential Improvements
+### Network
+#### Client connects to Server
+- SSID Broadcast : Server sends its SSID name for a client to connect to it
+- Server Discovery : Client receive SSID list, choose an SSID.
+- Association request : Client send an association request to server
+- IP Attribution (Static IP / DHCP ) 
+#### Client communicates with Network
+- ARP table and arp request
+- Broadcasting and routing
+
+### Cryptography
+- WPA1/2/3
+- Add a schema of the authentification handshake
+- crc-32 integrity checksum
+### Pentesting
+- Hack WEP network simulation ? 

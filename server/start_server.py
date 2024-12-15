@@ -17,7 +17,7 @@ encryption = select_encryption[security]
 def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', int(config["PORT"])))
-    server.listen(3)
+    server.listen(int(config["MAX_NUMBER_OF_CONNECTION"]) if config["MAX_NUMBER_OF_CONNECTION"] else 3)
     print("AP en attente de connexion...")
     while True:
         connection, addr = server.accept()

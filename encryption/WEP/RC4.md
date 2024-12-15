@@ -23,6 +23,8 @@ def rc4(text, key):
     return encrypted
 ```
 
+Check out the [code](../../utils/rc4.py).
+
 ## How RC4 Algorithm Works
 
 RC4 is a stream cipher that generates a pseudo-random key stream to encrypt or decrypt data.

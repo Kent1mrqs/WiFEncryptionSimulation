@@ -1,5 +1,4 @@
 PORT=11341
 IP=localhost
 PASSWORD=toto
-MAC=123
 SECURITY=WEP

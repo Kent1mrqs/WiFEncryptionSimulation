@@ -29,14 +29,9 @@ def authentification():
 
     return client
 
-def send_mac(client):
-    MAC = config["MAC"]
-    client.send(MAC.encode())
-
 def start_client():
 
     client = authentification()
-    send_mac(client)
 
     while True:
         data = input("Data to send to router : ")

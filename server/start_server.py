@@ -1,5 +1,7 @@
 import socket
 import threading
+import time
+import random
 import sys
 from pathlib import Path
 
@@ -22,13 +24,14 @@ def start_ap():
         client_thread.start()
 
 def generate_challenge():
-    return "challenge"
+    timestamp = int(time.time() * 1e9)
+    challenge = str(timestamp)
+    return challenge
 
 def handle_client(conn, addr):
-    print(f"Client connected : {addr}")
+    print(f"Start Connection : {addr}")
     try:
         challenge = generate_challenge()
-        print("challenge :", challenge)
 
         conn.send(challenge.encode())
         client_decrypted_challenge = conn.recv(1024).decode()
@@ -36,8 +39,10 @@ def handle_client(conn, addr):
         encrypted_password = rc4(challenge, config["PASSWORD"])
 
         if encrypted_password == client_decrypted_challenge:
+            conn.send("Connection successful.".encode())
             print("Client successfully connected")
         else:
+            conn.send("AUTH_FAILED".encode())
             print("Connection Tentative failed. Wrong Password.")
             conn.close()
 
@@ -53,7 +58,7 @@ def handle_client(conn, addr):
     except Exception as e:
         print(f"Erreur avec le client {addr}: {e}")
     finally:
-        print(f"Client disconnected : {addr}")
+        print(f"End Connection : {addr}")
         conn.close()
 
 start_ap()

@@ -20,12 +20,19 @@ def start_client():
 
     # 1. Authentification
     client = connect_to_server(client) # Client will now try to connect to server
-
     challenge = client.recv(1024).decode()
-    print("challenge :", challenge)
+
     # 2. Key Exchange
     decrypted_challenge = rc4(challenge,config["PASSWORD"] )
     client.send(decrypted_challenge.encode())
+
+    auth_response = client.recv(1024).decode()
+    if auth_response == "AUTH_FAILED":
+        print("Wrong password.")
+        client.close()
+        return
+    else:
+        print("Successfully connected")
 
     while True:
         #3. Data

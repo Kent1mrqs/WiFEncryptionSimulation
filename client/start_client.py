@@ -12,37 +12,37 @@ security = config["SECURITY"]
 encryption = select_encryption[security]
 
 def authentification():
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect((config['IP'], int(config['PORT'])))
+    connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    connection.connect((config['IP'], int(config['PORT'])))
 
-    challenge = client.recv(1024).decode()
+    challenge = connection.recv(1024).decode()
     decrypted_challenge = encryption(challenge,config["PASSWORD"] )
-    client.send(decrypted_challenge.encode())
+    connection.send(decrypted_challenge.encode())
 
-    auth_response = client.recv(1024).decode()
+    auth_response = connection.recv(1024).decode()
     if auth_response == "AUTH_FAILED":
         print("Wrong password.")
-        client.close()
+        connection.close()
         return
     else:
         print("Successfully connected")
 
-    return client
+    return connection
 
 def start_client():
 
-    client = authentification()
+    connection = authentification()
 
     while True:
         data = input("Data to send to router : ")
 
         encrypted_message = encryption(data, config["PASSWORD"])
-        client.send(encrypted_message.encode())
+        connection.send(encrypted_message.encode())
 
-        encrypted_response = client.recv(1024).decode()
+        encrypted_response = connection.recv(1024).decode()
         response = encryption(encrypted_response, config["PASSWORD"])
         print(response)
 
-    client.close()
+    connection.close()
 
 start_client()

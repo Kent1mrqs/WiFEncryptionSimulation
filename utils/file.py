@@ -1,7 +1,9 @@
 from utils.rc4 import rc4
+from utils.wpa1 import wpa1
 
 select_encryption = {
-    "WEP": rc4
+    "WEP": rc4,
+    "WPA1": wpa1
 }
 
 def read_config(file_path,required_keys):

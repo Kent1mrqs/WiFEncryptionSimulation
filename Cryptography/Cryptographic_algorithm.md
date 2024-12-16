@@ -1,5 +1,38 @@
 # Cryptographic Algorithm
 
+```mermaid
+mindmap
+  root((Wi-Fi Encryption Protocol))
+    WEP
+      encryption(RC4 Key)
+      functions
+        KSA(Key Scheduling Algorithm)
+        PRGA(Pseudo-Random Generation Algorithm)
+        XOR(Bitwise XOR Operation)
+    WPA1
+      encryption(TKIP: Temporal Key Integrity Protocol)
+      functions
+        MIC(Message Integrity Check)
+        TSC(Temporal Sequence Counter)
+        RC4(TKIP uses RC4 for encryption)
+    WPA2
+      encryption(AES: Advanced Encryption Standard)
+      protocol(CCMP: Counter Mode with Cipher Block Chaining Message Authentication Code Protocol)
+      enterpriseMode(Enterprise Mode: 802.1X)
+      personalMode(Personal Mode: WPA-PSK)
+      functions
+        PMK(Pairwise Master Key)
+        PTK(Pairwise Transient Key)
+        GTK(Group Temporal Key)
+    WPA3
+      encryption(192-bit Security Suite for sensitive networks)
+      SAE(SAE: Simultaneous Authentication of Equals)
+      functions
+        OWE(Opportunistic Wireless Encryption)
+        H2E(Hash-to-Element Protocol)
+        PMF(Protected Management Frames)
+
+```
 
 ## XOR cipher
 

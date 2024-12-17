@@ -55,8 +55,8 @@ For more details, check the [documentation](Simulation.md).
 ## Potential Improvements
 ### Network
 #### Client connects to Server
-- SSID Broadcast : Server sends its SSID name for a client to connect to it
-- Server Discovery : Client receive SSID list, choose an SSID.
+- SSID Broadcast : Server sends its SSID name to port 3636 for a client to connect to it
+- Server Discovery : Client listens on 3636, and choose SSID.
 - Association request : Client send an association request to server
 - IP Attribution (Static IP / DHCP ) 
 #### Client communicates with Network

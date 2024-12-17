@@ -66,10 +66,3 @@ For a deeper explanation, refer to the [WEP](WEP/README.md) and [RC4](WEP/RC4.md
 
 While this simulation currently uses WEP and RC4 for simplicity, stronger encryption protocols like WPA2 and WPA3 are recommended in real-world networks. The modular design of this project allows for future updates to include these modern protocols.
 
----
-
-This folder is an essential part of the simulation, offering insight into the encryption mechanisms that secure WiFi communication. For more details on how cryptography fits into the overall simulation, check the main README file in the project.
-
---- 
-
-Let me know if you’d like to modify or expand this further!

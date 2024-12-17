@@ -9,7 +9,7 @@
 
 ## Authentication
 Authentication ensures that the client and server can verify each other's identities before establishing a secure connection.
-The client will try to connect to the server (ip and port given in wifi_config.txt).
+The client will try to connect to the server (ip and port given in client_config.txt).
 
 ## Key Exchange
 ### Diffie-helman exchange

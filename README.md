@@ -35,22 +35,6 @@ For more details, check the [documentation](Network/Wifi.md).
 For more details, check the [documentation](Simulation.md). 
 
 
-## How to use
-
-### Server / Router
-- Open a terminal
-- Clone server repository 
-- Open [`wifi_config.txt`](server/wifi_config.txt) and complete it with wanted parameters.
-- Then start the server with `python3 start_server.py`
-
-### Client / Device
-- Open a new terminal
-- Clone client repository 
-- Open [`wifi_config.txt`](client/wifi_config.txt)
-- Enter the parameters of you server..
-- Then start the client with `python3 start_client.py`
-- You can simulate several connections if you restart these steps.
-
 
 ## Potential Improvements
 ### Network

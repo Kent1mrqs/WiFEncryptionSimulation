@@ -7,7 +7,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from utils.file import read_config, select_encryption
 
 required_parameters = ['IP', 'PORT', 'PASSWORD','SECURITY']
-config = read_config("wifi_config.txt", required_parameters)
+config = read_config("client_config.txt", required_parameters)
 security = config["SECURITY"]
 encryption = select_encryption[security]
 

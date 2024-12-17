@@ -9,7 +9,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from utils.file import read_config, select_encryption
 
 required_parameters = ['PORT', 'PASSWORD']
-config = read_config("wifi_config.txt", required_parameters)
+config = read_config("server_config.txt", required_parameters)
 security = config["SECURITY"]
 encryption = select_encryption[security]
 
@@ -18,7 +18,7 @@ def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', int(config["PORT"])))
     server.listen(int(config["MAX_NUMBER_OF_CONNECTION"]) if config["MAX_NUMBER_OF_CONNECTION"] else 3)
-    print("AP en attente de connexion...")
+    print("Access Point waiting for connection...")
     while True:
         connection, addr = server.accept()
         client_thread = threading.Thread(target=handle_client, args=(connection, addr))

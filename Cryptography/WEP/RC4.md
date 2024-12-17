@@ -62,26 +62,3 @@ def prga(S, length):
 
         key_stream_byte = S[(S[i] + S[j]) % 256]
         key_stream.append(key_stream_byte)
-
-    return key_stream
-```
-### 3. **Encryption or Decryption**
-- The generated key stream is XORed with the plaintext to produce ciphertext during encryption.
-- For decryption, the same key stream is XORed with the ciphertext to recover the plaintext (RC4 is symmetric).
-
-#### Code
-
-```
-def xor_encrypt_decrypt(text, key):
-    key = str(key)
-    encrypted_text = ""
-    for i in range(len(text)):
-        encrypted_text += chr(ord(text[i]) ^ ord(key[i % len(key)]))
-    return encrypted_text
-```
-
-## Vulnerabilities
-
-- **Weak Key Scheduling:** RC4 has biases in its output, particularly in the initial keystream bytes.
-- **Key Reuse Issues:** Using the same key for multiple encryptions leads to keystream reuse, which can allow plaintext recovery via XOR.
-- **Cryptanalysis Success:** Modern cryptanalysis methods have rendered RC4 insecure for many applications, leading to its deprecation in protocols like TLS.

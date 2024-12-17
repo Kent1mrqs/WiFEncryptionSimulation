@@ -1,71 +1,174 @@
-# Wifi Connection Simulation
-
-## Project Description
-For my RTU cryptography class, I choose this topic in order to put pratical application to cryptography algorithm. In this project I will use Diffie-hellman protocol and different encryption algorithm, you can find more information in the documentation.
-
+# WiFi Connection Simulation
 
 ## Overview
-
-This project simulates a simplified WiFi connection to demonstrate key aspects of network security and cryptographic protocols. 
-The goal is to recreate the essential components of a secure WiFi protocol, including :
-- **Authentication:** Verifying client and server identities.
-- **Key Exchange:** Establishing a shared secret over an insecure channel.
-- **Data Encryption:** Ensuring secure communication.
-- **Packet Transmission:** Simulating the exchange of encrypted packets.
-
-## Wifi Key Features
-> What are the steps of a WiFi connection between a WiFi device trying to connect to a WiFi Router ?
-- **Discover Available Networks:** Device will try to find WiFi SSIDs in proximities for User to connect.
-- **Authentification:** Then Device will try to 
-- **IP Address Assignement:**
-- **Establish a Connection:**
-- **Security Handshake:**
-- **Information Communication:**
+This project was developed for an RTU Cryptography class to explore the practical application of cryptographic algorithms in network security. 
+This project simulates the fundamental process of connecting to a WiFi network, including server authentication, encryption, and data transfer. The simulation demonstrates the steps involved in establishing a secure connection between a client and a server, with encryption protocols playing a central role in securing communication. The following guide explains the process and how to use this project.
 
 
-For more details, check the [documentation](Network/Wifi.md). 
-
-## Simulation Key Features
-> Here are the steps of the simulation of simplified WiFi Connection :
-- **Authentication:** Simulates a pre-shared key (PSK) mechanism, similar to WPA2/3.
-- **Key Exchange:** Implements the **Diffie-Hellman** algorithm to securely establish session keys.
-- **Data Encryption:** Protects data using a basic encryption method: **XOR**.
-- **Packet Transmission:** Models the exchange of encrypted data between an Access Point (AP) and Clients.
-
-For more details, check the [documentation](Simulation.md). 
-
-
-## How to use
-
-### Server / Router
-- Open a terminal
-- Clone server repository 
-- Open [`wifi_config.txt`](server/wifi_config.txt) and complete it with wanted parameters.
-- Then start the server with `python3 start_server.py`
-
-### Client / Device
-- Open a new terminal
-- Clone client repository 
-- Open [`wifi_config.txt`](client/wifi_config.txt)
-- Enter the parameters of you server..
-- Then start the client with `python3 start_client.py`
-- You can simulate several connections if you restart these steps.
+## Table of Contents
+1. [Introduction to WiFi Connections](#introduction-to-wifi-connections)
+2. [Simulation Overview](#simulation-overview)
+3. [Connection Process](#connection-process)
+   - [Client Authentication](#client-authentication)
+   - [Data Transfer](#data-transfer)
+3. [Getting Started](#getting-started)
+   - [1. Configure the Server](#1-configure-the-server)
+   - [2. Start the Server](#2-start-the-server)
+   - [3. Configure the Client](#3-configure-the-client)
+   - [4. Start the Client](#4-start-the-client)
+5. [Documentation](#documentation)
+6. [Screenshots](#screenshots)
 
 
-## Potential Improvements
-### Network
-#### Client connects to Server
-- SSID Broadcast : Server sends its SSID name to port 3636 for a client to connect to it
-- Server Discovery : Client listens on 3636, and choose SSID.
-- Association request : Client send an association request to server
-- IP Attribution (Static IP / DHCP ) 
-#### Client communicates with Network
-- ARP table and arp request
-- Broadcasting and routing
+## Introduction to WiFi Connections
+In a real WiFi connection, the following steps occur:
 
-### Cryptography
-- WPA1/2/3
-- Add a schema of the authentification handshake
-- crc-32 integrity checksum
-### Pentesting
-- Hack WEP network simulation ? 
+1. **Discover Available Networks:**
+   The WiFi device scans for nearby networks and displays the available SSIDs (Service Set Identifiers) for the user to choose from.
+
+2. **Authentication:**
+   The device attempts to connect to the selected WiFi network by providing a password or credentials. The router verifies these credentials.
+
+3. **IP Address Assignment:**
+   Once authenticated, the router assigns an IP address to the device using DHCP (Dynamic Host Configuration Protocol).
+
+4. **Establish a Connection:**
+   The device establishes a connection to the network, enabling communication with other devices and the internet.
+
+5. **Security Handshake:**
+   During the connection process, a handshake protocol (e.g., WPA2) is executed to exchange encryption keys securely and set up an encrypted communication channel.
+
+6. **Information Communication:**
+   Data is transmitted between the device and the router, encrypted to ensure confidentiality and integrity.
+
+For detailed information, refer to the [WiFi documentation](Network/WiFi.md).
+
+## Simulation Overview
+
+The simulation involves two main components:
+
+### 1. Server:
+- Handles client connections. 
+- Issues authentication challenges. 
+- Validates clients and manages encrypted communication.
+
+### 2. Client:
+- Connects to the server using its configuration.
+- Responds to authentication challenges.
+- Sends encrypted data to the server after authentication.
+
+## Connection Process
+### Client Authentication
+1. **Initiating Connection**:
+   - The client sends a connection request to the server.
+2. **Challenge-Response Mechanism**:
+   - The server generates a unique challenge (e.g., current time in nanoseconds).
+   - The client encrypts the challenge using the WEP encryption protocol and the configured password.
+   - The server validates the encrypted response by comparing it to its own encrypted challenge.
+3. **Authentication Outcome**:
+   - If the response is valid, the client is authenticated and can connect.
+
+Refer to [Network/Authentication.md](Network/Authentification.md) for detailed authentication steps.
+
+---
+
+### Data Transfer
+1. **Sending Data**:
+   - The client sends encrypted data to the server using RC4 encryption (as used in WEP).
+2. **Receiving Data**:
+   - The server decrypts the data and logs the received content.
+
+Refer to [Cryptography/WEP/RC4.md](Cryptography/WEP/RC4.md) for RC4 encryption details.
+
+
+
+## Getting Started
+Follow these steps to set up and run the simulation:
+
+### 1. Configure the Server
+Open `server/server_config.txt` and configure the following parameters:
+- **PORT:** The port number the server will use.
+- **PASSWORD:** The password clients must use to connect.
+- **MAX_NUMBER_OF_CONNECTION:** The maximum number of simultaneous client connections allowed.
+- **SECURITY:** The encryption protocol to use (currently, only `WEP` is supported).
+
+### 2. Start the Server
+Run the following command to start the server:
+```bash
+cd server && python3 start_server.py
+```
+
+### 3. Configure the Client
+Open `client/client_config.txt` and configure the following parameters:
+- **PORT:** The server’s port number.
+- **IP:** The server’s IP address (use `localhost` if running on the same device).
+- **PASSWORD:** The server’s password.
+- **SECURITY:** The server’s encryption protocol (currently, only `WEP` is supported).
+
+### 4. Start the Client
+Run the following command to start the client:
+```bash
+cd client && python3 start_client.py
+```
+
+### 5. Client Connection
+- The client initiates a connection to the server.
+- The server issues a challenge to authenticate the client.
+- Upon successful authentication, the server confirms the connection.
+
+### 6. Data Transmission
+- The client sends encrypted data to the server.
+- The server decrypts and displays the data.
+
+### 7. Additional Clients
+The server supports multiple clients up to the configured limit. Each client follows the same connection and data transmission process.
+
+### 8. End Connection
+Connections can be terminated, with the server displaying the disconnection details.
+
+## Documentation
+- [Network Authentication](Network/Authentification.md): Detailed information on the authentication process.
+- [Cryptography and WEP](Cryptography/README.md): Insights into the cryptographic protocols used, including RC4 encryption.
+
+## Screenshots
+
+1. Configuring the Server
+   ![Server Configuration](test/1-Configure_the_server.png)
+
+2. Starting the Server
+   ![Starting the Server](test/2-Start_server.png)
+
+3. Configuring the Client
+   ![Client Configuration](test/3-Configure_the_client.png)
+
+4. Starting the Client
+   ![Starting the Client](test/4-Start_client.png)
+
+5. Client Connected to Server
+   ![Client Connected](test/5-Client_connected_to_server.png)
+
+6. Data Transmission
+   ![Data Transmission](test/6-Client_sends_data.png)
+
+7. Adding a New Client
+   ![New Client](test/8.1-New_client.png)
+   ![New Client](test/8.2-New_client.png)
+
+8. Ending the Connection
+   ![End Connection](test/9-End_connection.png)
+
+## Conclusion
+This project provides a hands-on approach to understanding cryptographic principles and their application in network security. 
+
+
+
+
+
+
+
+
+
+
+
+
+

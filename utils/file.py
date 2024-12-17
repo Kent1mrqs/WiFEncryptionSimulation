@@ -1,10 +1,10 @@
 from utils.rc4 import rc4
 import time
-from utils.wpa1 import wpa1
+from utils.tkip import tkip
 
 select_encryption = {
     "WEP": rc4,
-    "WPA1": wpa1
+    "WPA": tkip
 }
 
 def generate_iv():

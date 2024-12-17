@@ -1,13 +1,12 @@
-# Cryptography 
+### Cryptography
 
-This folder contains information about the encryption methods used in the WiFi Connection Simulation. Cryptography plays a key role in securing the connection between the client and the server by encrypting authentication challenges and transmitted data.
+This folder contains information about the encryption methods used in the WiFi Connection Simulation. Cryptography plays a crucial role in securing the connection between the client and the server by encrypting authentication challenges and transmitted data.
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
 2. [Encryption in the Simulation](#encryption-in-the-simulation)
-3. [Current Implementation: WEP and RC4](#current-implementation-wep-and-rc4)
-4. [Files in This Folder](#files-in-this-folder)
+3. [Encryption Protocols](#encryption-protocols)
 
 ---
 
@@ -18,8 +17,7 @@ Cryptography ensures that communication between devices is private and secure. I
 - Authenticate devices trying to connect.
 - Protect data from being intercepted or altered during transmission.
 
-This folder focuses on the encryption techniques used in the simulation and provides a foundation for understanding how cryptography works in networking.
-
+This folder focuses on the encryption techniques used in the simulation, explaining how cryptography works in networking.
 
 ## Encryption in the Simulation
 
@@ -33,30 +31,69 @@ The simulation demonstrates how encryption is used in two main steps:
 2. **Data Transmission**:
     - After authentication, data sent between the client and server is encrypted using the RC4 stream cipher.
 
-These steps replicate how encryption protocols like WEP work, even though WEP is now outdated and vulnerable in real-world applications.
-
-## Current Implementation: WEP and RC4
-
-- **WEP (Wired Equivalent Privacy)**:
-    - A legacy encryption protocol used in older WiFi networks.
-    - Vulnerable to attacks due to weak key management and outdated algorithms.
-    - In this simulation, WEP is used for simplicity and educational purposes.
-
-- **RC4 (Rivest Cipher 4)**:
-    - A stream cipher used in WEP for encrypting data.
-    - It generates a pseudorandom stream of bytes (keystream) that is XORed with the data to produce encrypted output.
-    - While easy to implement, RC4 is not secure for modern use due to known vulnerabilities.
-
-For a deeper explanation, refer to the [WEP](WEP/README.md) and [RC4](WEP/RC4.md) documentation files in this folder.
-
-## Files in This Folder
-
-- **`WEP/README.md`**: Explains the WEP protocol and its implementation in the simulation.
-- **`WEP/RC4.md`**: Details how RC4 works and its role in encrypting data.
-- **`README.md`**: (This file) Provides an overview of the cryptographic methods used.
+These steps replicate how older encryption protocols like WEP worked. However, WEP is outdated and vulnerable in real-world applications, so newer protocols like WPA (Wi-Fi Protected Access) have replaced it.
 
 ---
 
-## Future Enhancements
+## Encryption Protocols
 
-While this simulation currently uses WEP and RC4 for simplicity, stronger encryption protocols like WPA2 and WPA3 are recommended in real-world networks. 
+### **[WEP (Wired Equivalent Privacy)](WEP/README.md)**
+
+- **WEP** was the first widely used Wi-Fi encryption protocol.
+- It uses the **RC4 stream cipher** to encrypt data.
+- WEP has several vulnerabilities, including weak key management and flaws in its encryption algorithm, which make it insecure for modern use.
+- In this simulation, WEP is used for educational purposes, but it is no longer recommended for real-world applications.
+
+### **[WPA (Wi-Fi Protected Access)](WPA/README.md)**
+
+- **WPA** is a stronger encryption protocol than WEP, introduced to fix its security flaws.
+- It uses **TKIP (Temporal Key Integrity Protocol)** for encryption, which dynamically changes the encryption key during communication.
+- While WPA offers better security than WEP, it is still vulnerable compared to WPA2 and WPA3.
+
+### **WPA2 (Wi-Fi Protected Access 2)**
+
+- **WPA2** uses **AES (Advanced Encryption Standard)**, a much stronger encryption method than RC4.
+- It supports two modes:
+    - **Enterprise Mode (802.1X)**: Requires additional authentication for business environments.
+    - **Personal Mode (WPA-PSK)**: Uses a pre-shared key for home networks.
+- WPA2 is the most widely used security protocol for Wi-Fi networks.
+
+### **WPA3 (Wi-Fi Protected Access 3)**
+
+- **WPA3** is the latest Wi-Fi security standard, offering even stronger encryption and protection against common attacks.
+- It uses a **192-bit security suite** for sensitive networks and includes **SAE (Simultaneous Authentication of Equals)** for more secure authentication.
+- WPA3 also introduces features like **OWE (Opportunistic Wireless Encryption)** and **PMF (Protected Management Frames)** to further improve security.
+
+```mermaid
+mindmap
+  root((Wi-Fi Encryption Protocol))
+    WEP
+      encryption(RC4 Key)
+      functions
+        KSA(Key Scheduling Algorithm)
+        PRGA(Pseudo-Random Generation Algorithm)
+        XOR(Bitwise XOR Operation)
+    WPA1
+      encryption(TKIP: Temporal Key Integrity Protocol)
+      functions
+        MIC(Message Integrity Check)
+        TSC(Temporal Sequence Counter)
+        RC4(TKIP uses RC4 for encryption)
+    WPA2
+      encryption(AES: Advanced Encryption Standard)
+      protocol(CCMP: Counter Mode with Cipher Block Chaining Message Authentication Code Protocol)
+      enterpriseMode(Enterprise Mode: 802.1X)
+      personalMode(Personal Mode: WPA-PSK)
+      functions
+        PMK(Pairwise Master Key)
+        PTK(Pairwise Transient Key)
+        GTK(Group Temporal Key)
+    WPA3
+      encryption(192-bit Security Suite for sensitive networks)
+      SAE(SAE: Simultaneous Authentication of Equals)
+      functions
+        OWE(Opportunistic Wireless Encryption)
+        H2E(Hash-to-Element Protocol)
+        PMF(Protected Management Frames)
+
+```

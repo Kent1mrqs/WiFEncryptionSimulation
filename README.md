@@ -1,9 +1,10 @@
 # WiFi Connection Simulation
 
-## Overview
-This project was developed for an RTU Cryptography class to explore the practical application of cryptographic algorithms in network security. 
-This project simulates the fundamental process of connecting to a WiFi network, including server authentication, encryption, and data transfer. The simulation demonstrates the steps involved in establishing a secure connection between a client and a server, with encryption protocols playing a central role in securing communication. The following guide explains the process and how to use this project.
+Full project on https://github.com/Kent1mrqs/WiFiConnectionSimulation.
 
+## Overview
+This project was developed for an RTU Cryptography class, I chose WiFi Connetion Simulation to explore the practical application of cryptographic algorithms in network security. 
+This project simulates the fundamental process of connecting to a WiFi network, including server authentication, encryption, and data transfer. The simulation demonstrates the steps involved in establishing a secure connection between a client and a server, with encryption protocols playing a central role in securing communication. The following guide explains the process and how to use this project.
 
 ## Table of Contents
 1. [Introduction to WiFi Connections](#introduction-to-wifi-connections)
@@ -36,7 +37,7 @@ In a real WiFi connection, the following steps occur:
    The device establishes a connection to the network, enabling communication with other devices and the internet.
 
 5. **Security Handshake:**
-   During the connection process, a handshake protocol (e.g., WPA2) is executed to exchange encryption keys securely and set up an encrypted communication channel.
+   During the connection process, a handshake protocol is executed to exchange encryption keys securely and set up an encrypted communication channel.
 
 6. **Information Communication:**
    Data is transmitted between the device and the router, encrypted to ensure confidentiality and integrity.
@@ -62,8 +63,8 @@ The simulation involves two main components:
 1. **Initiating Connection**:
    - The client sends a connection request to the server.
 2. **Challenge-Response Mechanism**:
-   - The server generates a unique challenge (e.g., current time in nanoseconds).
-   - The client encrypts the challenge using the WEP encryption protocol and the configured password.
+   - The server generates a unique challenge (current time in nanoseconds).
+   - The client encrypts the challenge using the encryption protocol and the configured password.
    - The server validates the encrypted response by comparing it to its own encrypted challenge.
 3. **Authentication Outcome**:
    - If the response is valid, the client is authenticated and can connect.
@@ -74,13 +75,11 @@ Refer to [Network/Authentication.md](Network/Authentification.md) for detailed a
 
 ### Data Transfer
 1. **Sending Data**:
-   - The client sends encrypted data to the server using RC4 encryption (as used in WEP).
+   - The client sends encrypted data to the server using encryption.
 2. **Receiving Data**:
    - The server decrypts the data and logs the received content.
 
-Refer to [Cryptography/WEP/RC4.md](Cryptography/WEP/RC4.md) for RC4 encryption details.
-
-
+Refer to [Cryptography/WEP/RC4.md](Cryptography/WEP/RC4.md) for encryption details.
 
 ## Getting Started
 Follow these steps to set up and run the simulation:
@@ -90,7 +89,7 @@ Open `server/server_config.txt` and configure the following parameters:
 - **PORT:** The port number the server will use.
 - **PASSWORD:** The password clients must use to connect.
 - **MAX_NUMBER_OF_CONNECTION:** The maximum number of simultaneous client connections allowed.
-- **SECURITY:** The encryption protocol to use (currently, only `WEP` is supported).
+- **SECURITY:** The encryption protocol to use.
 
 ### 2. Start the Server
 Run the following command to start the server:
@@ -128,7 +127,7 @@ Connections can be terminated, with the server displaying the disconnection deta
 
 ## Documentation
 - [Network Authentication](Network/Authentification.md): Detailed information on the authentication process.
-- [Cryptography and WEP](Cryptography/README.md): Insights into the cryptographic protocols used, including RC4 encryption.
+- [Cryptography and WEP](Cryptography/README.md): Insights into the cryptographic protocols used, including RC4 and TKIP encryption.
 
 ## Screenshots
 
@@ -157,8 +156,7 @@ Connections can be terminated, with the server displaying the disconnection deta
 8. Ending the Connection
    ![End Connection](test/9-End_connection.png)
 
-## Conclusion
-This project provides a hands-on approach to understanding cryptographic principles and their application in network security. 
+
 
 
 

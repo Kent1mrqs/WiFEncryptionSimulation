@@ -41,7 +41,7 @@ In a real WiFi connection, the following steps occur:
 6. **Information Communication:**
    Data is transmitted between the device and the router, encrypted to ensure confidentiality and integrity.
 
-For detailed information, refer to the [WiFi documentation](Network/Wifi.md).
+For detailed information, refer to the [WiFi documentation](Network/WiFi.md).
 
 ## Simulation Overview
 

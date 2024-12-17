@@ -3,7 +3,7 @@
 ## Device Authentication
 
 1. A device tries to connect to a router.
-2. The router sends a unique challenge (e.g., random data).
+2. The router sends a unique challenge (random data).
 3. The device encrypts the challenge using the password (shared WEP key).
 4. The encrypted challenge is sent back to the router.
 5. The router encrypts the challenge on its side and compares the results.
@@ -47,7 +47,7 @@ graph TD
    The encrypted data (ciphertext) and the IV are sent over the network.
 
 5. **Receiver Decrypts**:  
-   The receiver (e.g., router or device) decrypts the ciphertext using the shared WEP key and the transmitted IV.
+   The receiver (router or device) decrypts the ciphertext using the shared WEP key and the transmitted IV.
 
 6. **Integrity Check (CRC-32)**:  
    A CRC-32 checksum is included in the encrypted packet. After decryption, the checksum ensures that the data hasn’t been tampered with.

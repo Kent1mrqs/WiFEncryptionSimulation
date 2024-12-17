@@ -3,7 +3,7 @@
 ## **Device Authentication**
 
 1. A device attempts to connect to a router.
-2. The router sends the device a challenge (e.g., a random string or timestamp).
+2. The router sends the device a challenge (a random string or timestamp).
 3. The device encrypts the challenge using the password provided by the user.
 4. The device sends the encrypted result to the router.
 5. The router encrypts the challenge using its stored password and compares the result with the device’s response.

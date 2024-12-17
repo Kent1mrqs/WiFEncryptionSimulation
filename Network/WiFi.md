@@ -17,7 +17,7 @@ WiFi, short for "Wireless Fidelity," is a wireless communication technology that
     - WiFi uses radio waves in the 2.4 GHz or 5 GHz frequency bands to transmit data.
 
 4. **Encryption Protocols**
-    - Secure the communication between devices and prevent unauthorized access (e.g., WPA2, WPA3).
+    - Secure the communication between devices and prevent unauthorized access (WPA2, WPA3).
 
 ---
 
@@ -27,7 +27,7 @@ WiFi, short for "Wireless Fidelity," is a wireless communication technology that
     - Devices search for available networks and display their names (SSIDs).
 
 2. **Authentication**
-    - For secured networks, users must provide a password. The router verifies the credentials using encryption protocols (e.g., WPA2).
+    - For secured networks, users must provide a password. The router verifies the credentials using encryption protocols ( WPA2).
 
 3. **IP Address Assignment**
     - Once authenticated, the router assigns an IP address to the device using DHCP (Dynamic Host Configuration Protocol).

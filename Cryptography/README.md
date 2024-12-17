@@ -20,7 +20,6 @@ Cryptography ensures that communication between devices is private and secure. I
 
 This folder focuses on the encryption techniques used in the simulation and provides a foundation for understanding how cryptography works in networking.
 
----
 
 ## Encryption in the Simulation
 
@@ -36,8 +35,6 @@ The simulation demonstrates how encryption is used in two main steps:
 
 These steps replicate how encryption protocols like WEP work, even though WEP is now outdated and vulnerable in real-world applications.
 
----
-
 ## Current Implementation: WEP and RC4
 
 - **WEP (Wired Equivalent Privacy)**:
@@ -52,8 +49,6 @@ These steps replicate how encryption protocols like WEP work, even though WEP is
 
 For a deeper explanation, refer to the [WEP](WEP/README.md) and [RC4](WEP/RC4.md) documentation files in this folder.
 
----
-
 ## Files in This Folder
 
 - **`WEP/README.md`**: Explains the WEP protocol and its implementation in the simulation.
@@ -64,5 +59,4 @@ For a deeper explanation, refer to the [WEP](WEP/README.md) and [RC4](WEP/RC4.md
 
 ## Future Enhancements
 
-While this simulation currently uses WEP and RC4 for simplicity, stronger encryption protocols like WPA2 and WPA3 are recommended in real-world networks. The modular design of this project allows for future updates to include these modern protocols.
-
+While this simulation currently uses WEP and RC4 for simplicity, stronger encryption protocols like WPA2 and WPA3 are recommended in real-world networks. 

@@ -13,8 +13,6 @@ graph TD
     D --> |Encrypted/Decrypted Data| E[End]
 ```
 
----
-
 ## How RC4 Algorithm Works
 
 ### 1. **Key Scheduling Algorithm (KSA)**
@@ -30,8 +28,6 @@ def ksa(key, S):
         S[i], S[j] = S[j], S[i]  # Swap elements in S
     return S
 ```
-
----
 
 ### 2. **Pseudo-Random Generation Algorithm (PRGA)**
 The PRGA generates a pseudo-random key stream based on the shuffled `S` array.
@@ -52,8 +48,6 @@ def prga(S, length):
     return key_stream
 ```
 
----
-
 ### 3. **XOR Cipher**
 The XOR cipher combines the plaintext (or ciphertext) with the key stream to produce encrypted or decrypted output.
 
@@ -66,8 +60,6 @@ def xor_encrypt_decrypt(text, key):
     return result
 ```
 
----
-
 ### Complete RC4 Implementation
 
 ```python
@@ -79,8 +71,6 @@ def rc4(text, key):
     return encrypted
 ```
 
----
-
 ## Limitations of RC4
 
 RC4 has several weaknesses that make it unsuitable for modern cryptographic applications:
@@ -88,7 +78,5 @@ RC4 has several weaknesses that make it unsuitable for modern cryptographic appl
 1. **Key Stream Bias**: The initial bytes of the key stream are biased, allowing attackers to infer information about the key.
 2. **Vulnerable to Replay Attacks**: Reusing the same key for different data can reveal plaintext patterns.
 3. **Deprecated**: RC4 is no longer considered secure and has been replaced by more robust algorithms in modern systems.
-
----
 
 For more details, check the [RC4 Code Implementation](../../utils/rc4.py).

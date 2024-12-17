@@ -60,4 +60,3 @@ sequenceDiagram
 - Support for WPA2/WPA3 authentication.
 - Implementation of dynamic key generation.
 - Addition of a handshake protocol for key exchange.
-- Simulation of more advanced enterprise authentication methods.

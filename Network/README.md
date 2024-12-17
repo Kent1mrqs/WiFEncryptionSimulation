@@ -1,8 +1,4 @@
-Here’s a simplified version of the README with more accessible language:
-
----
-
-# Network Documentation
+# Network 
 
 This folder explains how the network part of the WiFi Connection Simulation works. It focuses on how devices communicate, how authentication happens, and how data is sent securely between the client and the server.
 

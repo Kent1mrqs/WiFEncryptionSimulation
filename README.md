@@ -57,9 +57,6 @@ The simulation involves two main components:
 - Responds to authentication challenges.
 - Sends encrypted data to the server after authentication.
 
-For further details, check the [Simulation documentation](Simulation.md).
-
-
 ## Connection Process
 ### Client Authentication
 1. **Initiating Connection**:
@@ -71,7 +68,7 @@ For further details, check the [Simulation documentation](Simulation.md).
 3. **Authentication Outcome**:
    - If the response is valid, the client is authenticated and can connect.
 
-Refer to [Network/Authentication.md](../Network/Authentification.md) for detailed authentication steps.
+Refer to [Network/Authentication.md](Network/Authentification.md) for detailed authentication steps.
 
 ---
 
@@ -81,7 +78,7 @@ Refer to [Network/Authentication.md](../Network/Authentification.md) for detaile
 2. **Receiving Data**:
    - The server decrypts the data and logs the received content.
 
-Refer to [Cryptography/WEP/RC4.md](../Cryptography/WEP/RC4.md) for RC4 encryption details.
+Refer to [Cryptography/WEP/RC4.md](Cryptography/WEP/RC4.md) for RC4 encryption details.
 
 
 
@@ -132,7 +129,6 @@ Connections can be terminated, with the server displaying the disconnection deta
 ## Documentation
 - [Network Authentication](Network/Authentification.md): Detailed information on the authentication process.
 - [Cryptography and WEP](Cryptography/README.md): Insights into the cryptographic protocols used, including RC4 encryption.
-- [Simulation Steps](Simulation.md): Technical details of the simulation workflow.
 
 ## Screenshots
 

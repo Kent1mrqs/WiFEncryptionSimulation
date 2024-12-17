@@ -50,7 +50,7 @@ These steps replicate how encryption protocols like WEP work, even though WEP is
     - It generates a pseudorandom stream of bytes (keystream) that is XORed with the data to produce encrypted output.
     - While easy to implement, RC4 is not secure for modern use due to known vulnerabilities.
 
-For a deeper explanation, refer to the WEP and RC4 documentation files in this folder.
+For a deeper explanation, refer to the [WEP](WEP/README.md) and [RC4](WEP/RC4.md) documentation files in this folder.
 
 ---
 

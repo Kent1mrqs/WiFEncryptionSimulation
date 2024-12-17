@@ -1,5 +1,5 @@
 # Test
-
+See on [github](https://github.com/Kent1mrqs/WiFiConnectionSimulation/tree/main/test).
 # 1. Configure the server
 
 Open [`server/server_config.txt`](server/server_config.txt) and complete it with wanted parameters.

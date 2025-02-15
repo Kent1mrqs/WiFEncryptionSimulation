@@ -1,6 +1,6 @@
 # WiFi Encryption Simulation
 
-Full project on https://github.com/Kent1mrqs/WiFiConnectionSimulation.
+Full project on https://github.com/Kent1mrqs/WiFiEncryptionSimulation.
 
 ## Overview
 This project was developed for an RTU Cryptography class, I chose WiFi Encryption Simulation to explore the practical application of cryptographic algorithms in network security.

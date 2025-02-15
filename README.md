@@ -4,7 +4,7 @@ Full project on https://github.com/Kent1mrqs/WiFiEncryptionSimulation.
 
 ## Overview
 This project was developed for an RTU Cryptography class, I chose WiFi Encryption Simulation to explore the practical application of cryptographic algorithms in network security.
-This project simulates the fundamental process of connecting to a WiFi network, including server authentication, encryption, and data transfer. The simulation demonstrates the steps involved in establishing a secure connection between a client and a server, with encryption protocols playing a central role in securing communication. The following guide explains the process and how to use this project.
+This project simulates the process of connecting a device to a WiFi network, including server authentication, encryption, and data transfer. The simulation demonstrates the steps involved in establishing a secure connection between a client and a server, with encryption protocols playing a central role in securing communication.
 
 ## Table of Contents
 1. [Introduction to WiFi Connections](#introduction-to-wifi-connections)
